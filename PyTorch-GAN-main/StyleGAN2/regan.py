@@ -57,7 +57,7 @@ class Regan_training(nn.Module):
 
     def apply_masks(self):
         for w, mask_w in zip(self.layers, self.masks):
-            w.data[mask_w] = torch.randn_like(w.data[mask_w])  # Assign random values
+            w.data[mask_w] = 0.01  # Assign non zero values
             w.grad.data[mask_w] = 0
 
     def forward(self, x, return_latents=False,
